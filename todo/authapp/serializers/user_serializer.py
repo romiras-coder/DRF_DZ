@@ -6,4 +6,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserDRF
         fields = ['url', 'username', 'email', 'groups']
-
