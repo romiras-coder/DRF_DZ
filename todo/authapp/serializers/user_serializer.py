@@ -5,4 +5,6 @@ from rest_framework import serializers
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserDRF
-        fields = ['url', 'username', 'email', 'groups']
+        # fields = ['url', 'username', 'email', 'groups']
+        # fields = '__all__'
+        exclude = ('user_permissions',)
