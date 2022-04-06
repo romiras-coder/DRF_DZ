@@ -35,12 +35,4 @@ class App extends React.Component {
     )
   }
 }
-
-// function App() {
-//   return(
-//     <>
-//       <NavBar />
-//     </>
-//   )
-// }
 export default App;
