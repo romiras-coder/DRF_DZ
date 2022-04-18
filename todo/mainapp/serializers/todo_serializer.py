@@ -6,7 +6,7 @@ from .projects_serializer import ProjectsSerializer
 
 class TodoSerializer(serializers.ModelSerializer):
     # user_created = UserSerializer()
-    # project = ProjectsSerializer()
+    project = ProjectsSerializer()
 
     class Meta:
         model = Todo

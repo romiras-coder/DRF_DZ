@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
+import axios from 'axios'
 
 const UserItem = ({ user }) => {
     return (
@@ -9,23 +10,20 @@ const UserItem = ({ user }) => {
                     {user.username}
                 </td>
                 <td>
-                    {user.first_name}
+                    {user.firstName}
                 </td>
                 <td>
-                    {user.last_name}
+                    {user.lastName}
                 </td>
                 <td>
                     {user.email}
-                </td>
-                <td>
-                    {user.url}
                 </td>
             </tr>
         </tbody>
     )
 }
 
-const UsersList = ({ users }) => {
+const UsersTeble = ({ users }) => {
     return (
         <Table striped bordered hover>
             <thead>
@@ -33,20 +31,34 @@ const UsersList = ({ users }) => {
                     username
                 </th>
                 <th>
-                    first_name
+                    firstName
                 </th>
                 <th>
-                    last_name
+                    lastName
                 </th>
                 <th>
                     email
-                </th>
-                <th>
-                    url
                 </th>
             </thead>
             {users.map((user) => <UserItem user={user} />)}
         </Table>
     )
 }
-export default UsersList
+
+export default class UsersList extends React.Component {
+    state = {
+        'users': []
+    }
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8000/api/users/')
+            .then(response => {
+                const users = response.data.results
+                this.setState({ 'users': users })
+            }).catch(error => console.log(error))
+    }
+    render() {
+        return (
+            UsersTeble({ users: this.state.users })
+        )
+    }
+}
