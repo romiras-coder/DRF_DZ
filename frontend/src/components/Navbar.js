@@ -4,7 +4,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 import { BrowserRouter, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import UsersList from './Users'
 import ProjectsList from './Projects'
-import ItemsDate from './ProjectItem'
+import ProjectItem from './ProjectItem'
 import TodoList from './Todo'
 
 
@@ -53,9 +53,9 @@ export default function NaviBar() {
             <Routes>
                 <Route exact path='/Users' element={<UsersList />} />
                 <Route exact path='/Projects' element={<ProjectsList />} />
-                <Route exact path='/Projects/:id'>
 
-                </Route>
+                <Route exact path='/Projects/:id'  element={<ProjectItem />}/>
+
                 <Route exact path='/Todos' element={<TodoList />} />
                 <Route path='*' element = {<NotFound404 />} />
             </Routes>
